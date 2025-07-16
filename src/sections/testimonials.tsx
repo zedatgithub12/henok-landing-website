@@ -76,8 +76,8 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto flex flex-col justify-between">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <p className="text-xs font-light  text-gray-400 mb-2">
-              [TESTIMONIALS]
+            <p className="text-xs font-light  text-gray-400 mb-2 tracking-widest">
+              [ TESTIMONIALS ]
             </p>
             <h2 className=" text-3xl md:text-4xl  font-semibold text-[#3B0764] leading-tight">
               Don&apos;t just take our
@@ -114,24 +114,29 @@ const Testimonials = () => {
             {testimonials?.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-[#AECDA6] rounded-3xl p-6 shadow-sm min-h-[40dvh]"
+                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh]"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <Image
-                    src={testimonial.avatar || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                  <div>
+                <div className="flex items-start gap-3 relative">
+                  <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md bg-amber-300">
+                    <div className="w-16 h-16 flex items-center justify-center   rounded-br-3xl relative p-2">
+                      <Image
+                        src={testimonial.avatar || "/images/auxi-avatar.png"}
+                        alt={testimonial.name}
+                        width={120}
+                        height={120}
+                        className="w-14 h-14 object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-6 py-2">
                     <h4 className="font-semibold text-gray-900">
                       {testimonial.name}
                     </h4>
                     <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed p-6">
                   <q>{testimonial.content}</q>
                 </p>
               </div>
@@ -146,7 +151,7 @@ const Testimonials = () => {
 export default Testimonials;
 
 const SkeletonCard = () => (
-  <div className="bg-white rounded-xl p-6 shadow-sm animate-pulse">
+  <div className="bg-white rounded-xl p-6 shadow-sm animate-pulse min-h-[30dvh]">
     <div className="flex items-center gap-3 mb-4">
       <div className="w-10 h-10 bg-gray-300 rounded-full" />
       <div className="flex flex-col gap-2">
@@ -155,9 +160,15 @@ const SkeletonCard = () => (
       </div>
     </div>
     <div className="space-y-2">
-      <div className="h-3 w-full bg-gray-200 rounded" />
-      <div className="h-3 w-5/6 bg-gray-200 rounded" />
-      <div className="h-3 w-3/4 bg-gray-200 rounded" />
+      <div className="h-2 w-full bg-gray-200 rounded" />
+      <div className="h-2 w-5/6 bg-gray-200 rounded" />
+      <div className="h-2 w-3/4 bg-gray-200 rounded" />
+    </div>
+
+    <div className="space-y-2 mt-4">
+      <div className="h-2 w-full bg-gray-200 rounded" />
+      <div className="h-2 w-5/6 bg-gray-200 rounded" />
+      <div className="h-2 w-3/4 bg-gray-200 rounded" />
     </div>
   </div>
 );
