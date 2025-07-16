@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'tailwind-scrollbar-hide/v4';
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,7 +12,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -29,23 +30,40 @@ body {
   display: inline-block;
   background: #fff;
   border-bottom-right-radius: 25px;
+  border-top-left-radius: 20px;
   border-right: 2px solid #AECDA6;
   border-bottom: 2px solid #AECDA6;
+}
+
+.inner-icon {
+  background-color: #FFFFFF;
+  border-radius: 30px 24px 24px 24px;
+  position: relative;
+  padding: 10px 10px 6px 10px;
+  border-width: 3;
+  border-color: #0a0a0a;
+  overflow: hidden;
 }
 
 .testimonials-avatar-wrapper::before {
   content: "";
   position: absolute;
-  right: 0;
-  border-top-left-radius: 120px;
-  box-shadow: 8px 8px 0 8px #53704b;
+  top: 0;
+  right: -14px;
+  padding: 6.1px;
+  border-top-left-radius: 14px;
+  box-shadow: -3.2px -4px 0 2px #ffffff;
+  border-top: 2px solid #AECDA6;
+  border-left: 2px solid #AECDA6;
 }
 
 .testimonials-avatar-wrapper::after {
   content: "";
   position: absolute;
-  left: 0;
-  border-top-left-radius: 60px;
-  box-shadow: 8px 8px 0 8px #AECDA6;
-  border: 2px solid #AECDA6;
+  left: 0.4px;
+  border-top-left-radius: 14px;
+  padding: 7px;
+  box-shadow: -3px -4px 0 2px #ffffff;
+  border-top: 2px solid #AECDA6;
+  border-left: 2px solid #AECDA6;
 }

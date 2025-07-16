@@ -68,7 +68,7 @@ const Testimonials = () => {
 
   return (
     <section
-      className="bg-white py-16 pb-4  px-6  bg-no-repeat bg-left bg-contain w-full"
+      className="bg-white pt-16 pb-4 mb-14  px-6  bg-no-repeat bg-left bg-contain w-full"
       style={{
         backgroundImage: "url('/images/patterns/testimonials-pattern.png')",
       }}
@@ -110,15 +110,15 @@ const Testimonials = () => {
         )}
 
         {!loading && !error && testimonials.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 ">
             {testimonials?.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh]"
+                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-1/3"
               >
                 <div className="flex items-start gap-3 relative">
-                  <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md bg-amber-300">
-                    <div className="w-16 h-16 flex items-center justify-center   rounded-br-3xl relative p-2">
+                  <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
+                    <div className="inner-icon">
                       <Image
                         src={testimonial.avatar || "/images/auxi-avatar.png"}
                         alt={testimonial.name}
