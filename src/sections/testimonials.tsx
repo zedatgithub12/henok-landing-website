@@ -116,7 +116,7 @@ const Testimonials = () => {
             {testimonials?.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[360px]"
+                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[368px]"
               >
                 <div className="flex items-start gap-3 relative">
                   <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
