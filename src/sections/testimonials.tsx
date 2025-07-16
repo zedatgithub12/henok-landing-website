@@ -73,25 +73,27 @@ const Testimonials = () => {
         backgroundImage: "url('/images/patterns/testimonials-pattern.png')",
       }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col justify-between">
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <p className="text-xs font-light  text-gray-400 mb-2 tracking-widest">
-              [ TESTIMONIALS ]
-            </p>
-            <h2 className=" text-3xl md:text-4xl  font-semibold text-[#3B0764] leading-tight">
-              Don&apos;t just take our
-              <br />
-              word for it
-            </h2>
-          </div>
-          <div className="flex gap-2">
-            <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
-              <ChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
+      <div className=" pt-16 pb-0 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-xs font-light  text-gray-400 mb-2 tracking-widest">
+                [ TESTIMONIALS ]
+              </p>
+              <h2 className=" text-3xl md:text-4xl  font-semibold text-[#3B0764] leading-tight">
+                Don&apos;t just take our
+                <br />
+                word for it
+              </h2>
+            </div>
+            <div className="flex gap-2">
+              <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
+                <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -114,7 +116,7 @@ const Testimonials = () => {
             {testimonials?.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-1/3"
+                className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[360px]"
               >
                 <div className="flex items-start gap-3 relative">
                   <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">

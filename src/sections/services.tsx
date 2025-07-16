@@ -57,7 +57,7 @@ const Services = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`${feature.bgClass} rounded-2xl p-6 text-white relative overflow-hidden min-w-[380px] h-[76dvh] flex flex-col justify-end`}
+              className={`${feature.bgClass} rounded-2xl p-6 text-white relative overflow-hidden min-w-[380px] h-[72dvh] flex flex-col justify-end`}
             >
               <div className="absolute -top-2 -right-1 opacity-20 rounded-bl-4xl overflow-hidden">
                 <div className="grid grid-cols-8 gap-4 h-full p-4">

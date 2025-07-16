@@ -1,7 +1,12 @@
 const Footer = () => {
   return (
     <>
-      <section className="bg-[#020617] text-white pt-16 pb-6 px-6">
+      <section
+        className="bg-[#020617] text-white pt-16 pb-6 px-6 bg-no-repeat bg-left bg-contain w-full"
+        style={{
+          backgroundImage: "url('/images/patterns/footer-pattern.png')",
+        }}
+      >
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Accelerate AI adoption</h2>
 
