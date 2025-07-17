@@ -26,20 +26,6 @@ const features = [
     bgClass: "bg-gradient-to-br from-[#DD648D] to-[#DEA750]",
     pattern: "lines",
   },
-  {
-    title: "Lead Capture & CRM Automation",
-    description:
-      "Engage website visitors in real-time, converting prospects into qualified leads through intelligent conversations. Our agents seamlessly integrate with your CRM, ensuring no opportunity is missed.",
-    bgClass: "bg-gradient-to-br from-[#DD648D] to-[#DEA750]",
-    pattern: "lines",
-  },
-  {
-    title: "Lead Capture & CRM Automation",
-    description:
-      "Engage website visitors in real-time, converting prospects into qualified leads through intelligent conversations. Our agents seamlessly integrate with your CRM, ensuring no opportunity is missed.",
-    bgClass: "bg-gradient-to-br from-[#DD648D] to-[#DEA750]",
-    pattern: "lines",
-  },
 ];
 
 const patternImages = [
