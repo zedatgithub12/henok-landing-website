@@ -4,9 +4,9 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="min-h-[60dvh] bg-[#F1F5F966] p-8 border-t border-t-gray-200">
+    <div className="min-h-[60dvh] bg-[#ffffff66] p-8 border-t border-t-gray-200">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           <div className="relative">
             <div className=" rounded-lg p-8 lg:p-12">
               <div className="space-y-5">
@@ -27,15 +27,15 @@ const Hero = () => {
           </div>
 
           {/* Right Workflow Diagram */}
-          <div className="relative">
-            <div className=" rounded-lg p-2 lg:p-2">
+          <div className="relative ">
+            <div className=" rounded-lg ">
               <div className="relative h-96 flex items-center justify-center">
                 <Image
                   src="/images/flow diagram.png"
                   alt="workflow diagram"
-                  width={500}
-                  height={500}
-                  className="w-fit h-fit object-contain"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>

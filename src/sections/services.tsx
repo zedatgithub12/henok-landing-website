@@ -45,7 +45,7 @@ const features = [
 const patternImages = [
   "/images/patterns/autonomus-onboarding.png",
   "/images/patterns/automated-it.png",
-  "/images/build-yourself.png",
+  "/images/patterns/line-pattern.png",
 ];
 
 const Services = () => {
@@ -67,8 +67,8 @@ const Services = () => {
     }
   };
   return (
-    <section className="bg-white py-8 px-6">
-      <div className="bg-white pt-8 px-6">
+    <section className="bg-white py-8 px:3 lg:px-6">
+      <div className="bg-white pt-8 px:3 lg:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -102,7 +102,7 @@ const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div
           ref={scrollContainerRef}
-          className="flex flex-nowrap overflow-x-auto scrollbar-hidden px-6 scrollbar-hide  gap-6"
+          className="flex flex-nowrap overflow-x-auto scrollbar-hidden px:1 lg:px-6 scrollbar-hide  gap-6"
         >
           {features.map((feature, index) => {
             const randomNum = Math.floor(Math.random() * 3);
@@ -110,7 +110,7 @@ const Services = () => {
             return (
               <div
                 key={index}
-                className={`${feature.bgClass} rounded-2xl p-6 pb-20 text-white relative overflow-hidden min-w-[380px] h-[72dvh] flex flex-col justify-end`}
+                className={`${feature.bgClass} rounded-2xl p-6 pb-8 lg:pb-20  text-white relative overflow-hidden min-w-[380px] h-[72dvh] flex flex-col justify-end`}
               >
                 <Image
                   src={patternImages[randomNum]}

@@ -3,8 +3,8 @@ import React from "react";
 
 const WorkflowInAction = () => {
   return (
-    <div className="min-h-[80dvh] bg-transparent p-8 flex flex-col items-center relative">
-      <div className="absolute top-8 left-8 opacity-30">
+    <div className="min-h-[80dvh] bg-transparent  p-8 flex flex-col items-center relative">
+      {/* <div className="absolute top-8 left-8 opacity-30">
         <svg
           width="120"
           height="120"
@@ -26,7 +26,7 @@ const WorkflowInAction = () => {
           <circle cx="20" cy="80" r="3" fill="currentColor" />
           <circle cx="60" cy="60" r="3" fill="currentColor" />
         </svg>
-      </div>
+      </div> */}
       <div className="text-center">
         <p className="text-xs font-light  text-gray-500 mb-2 tracking-[0.4em] uppercase">
           [ Prompt to workflow ]
@@ -41,25 +41,7 @@ const WorkflowInAction = () => {
         </p>
       </div>
 
-      <Image
-        src="/images/graphic-elements.png"
-        alt="graphic-elements"
-        width={600}
-        height={600}
-        className="w-44 h-44 object-contain absolute right-10 top-0"
-      />
-
-      <div className="max-w-sm h-24 mt-10">
-        <Image
-          src="/images/sparkles.png"
-          alt="Sparks"
-          width={600}
-          height={600}
-          className="w-12 h-12 object-contain"
-        />
-      </div>
-
-      <div className="max-w-5xl h-full -mt-20">
+      <div className="max-w-5xl h-full pt-14">
         <Image
           src="/images/in-action-flow.png"
           alt="In action workflow diagram"

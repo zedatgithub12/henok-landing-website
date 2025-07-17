@@ -15,10 +15,10 @@ export default function Home() {
       <Header />
       <div className="relative overflow-hidden">
         <div
-          className="absolute top-50 -right-20 w-[500px] h-[500px] rounded-full z-0 blur-3xl opacity-36"
+          className="absolute top-40 -right-20 w-[480px] h-[600px] blur-3xl rounded-xl rotate-45 z-0  opacity-30"
           style={{
             background:
-              "radial-gradient(circle,  #d37aff 0%, #bd7aff 40%, #0561ff 80%, #6ba2ff 100%)",
+              "radial-gradient(circle, #bd7aff 10%, #0561ff 100%, #bd7aff 10%, #0561ff 40%)",
           }}
         ></div>
 

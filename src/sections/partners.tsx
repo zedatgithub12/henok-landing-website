@@ -11,7 +11,7 @@ const partnersLogo = [
 ];
 const Partners = () => {
   return (
-    <div className="p-4 w-full bg-white shadow-sm shadow-gray-50 overflow-hidden flex gap-4 items-center justify-evenly">
+    <div className="p-4 w-full bg-white shadow-sm shadow-gray-50 overflow-x-auto scrollbar-hide flex gap-4 items-center justify-evenly">
       {partnersLogo.map((logo, index) => (
         <Image
           key={index}

@@ -23,7 +23,7 @@ type Metric = {
 // Defines the structure for a single comparison card's data.
 type ComparisonCardProps = {
   title: string;
-  offer: boolean;
+  type: "auxi" | "self";
   description: string;
   metrics: Metric[];
 };
@@ -31,7 +31,7 @@ type ComparisonCardProps = {
 const comparisonData: ComparisonCardProps[] = [
   {
     title: "Build it Yourself",
-    offer: false,
+    type: "self",
     description:
       "Long dev cycles, constant maintenance, and a team distracted from core priorities.",
     metrics: [
@@ -51,7 +51,7 @@ const comparisonData: ComparisonCardProps[] = [
   },
   {
     title: "With Auxi",
-    offer: true,
+    type: "auxi",
     description:
       "Launch in days, automate instantly, and keep your team focused on what matters.",
     metrics: [
@@ -72,8 +72,15 @@ const comparisonData: ComparisonCardProps[] = [
 ];
 
 const AccelerateTeam = () => {
-  const [switchState, setSwitchState] = useState(false);
+  const [switchState, setSwitchState] = useState<"auxi" | "self">("auxi");
 
+  const handleToggling = () => {
+    if (switchState === "auxi") {
+      setSwitchState("self");
+    } else {
+      setSwitchState("auxi");
+    }
+  };
   return (
     <div className="min-h-[80dvh] bg-transparent p-8 pt-16 pb-0 flex flex-col items-center relative">
       <div className="text-center space-y-2">
@@ -96,14 +103,14 @@ const AccelerateTeam = () => {
         </h4>
 
         <div
-          className={`w-20 h-12 rounded-full transition-all ease-out  ${
-            switchState ? "bg-[#3B0764]" : "bg-[#f5eaff]"
+          className={`w-20 h-12 rounded-full cursor-pointer   ${
+            switchState === "auxi" ? "bg-[#3B0764]" : "bg-[#64748B]"
           }  p-1 relative`}
-          onClick={() => setSwitchState(!switchState)}
+          onClick={() => handleToggling()}
         >
           <div
-            className={`w-10 h-10 rounded-full   ${
-              switchState ? " bg-[#f5e9ff] float-end" : " bg-[#3B0764]  "
+            className={`w-10 h-10 rounded-full transition-all ease-in duration-500 bg-[#ffffff]  ${
+              switchState === "auxi" ? "  float-end" : "   "
             } `}
           />
         </div>
@@ -115,8 +122,10 @@ const AccelerateTeam = () => {
           <div
             key={index}
             className={`text-white rounded-lg py-6 px-5 w-full max-w-md shadow-lg mx-auto text-center flex flex-col h-full ${
-              card.offer ? "bg-black" : "bg-[#1E293B]"
-            } ${switchState && card.offer ? " shadow-xl shadow-[#f1e3ff]" : ""}
+              card.type === switchState
+                ? "bg-black shadow-xl shadow-[#f1e3ff]"
+                : "bg-[#1E293B]"
+            } 
             `}
           >
             <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
@@ -124,7 +133,7 @@ const AccelerateTeam = () => {
               {card.description}
             </p>
 
-            {card.offer ? (
+            {card.type === "auxi" ? (
               <div className="flex justify-center items-center  relative">
                 <Image
                   src="/images/auxi-build.png"
