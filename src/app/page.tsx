@@ -1,7 +1,9 @@
 import AccelerateTeam from "@/sections/accelerate-team";
+import AgentForBusiness from "@/sections/agent-for-business";
 import Footer from "@/sections/footer";
 import Header from "@/sections/header";
 import Hero from "@/sections/hero";
+import Integrations from "@/sections/integrations";
 import Partners from "@/sections/partners";
 import Services from "@/sections/services";
 import Testimonials from "@/sections/testimonials";
@@ -25,7 +27,9 @@ export default function Home() {
       </div>
       <Partners />
       <AccelerateTeam />
+      <AgentForBusiness />
       <Services />
+      <Integrations />
       <Testimonials />
       <Footer />
     </div>

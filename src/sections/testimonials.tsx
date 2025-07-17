@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Testimonial = {
   id: string;
@@ -13,40 +13,11 @@ type Testimonial = {
 };
 
 const Testimonials = () => {
-  // const testimonials = [
-  //   {
-  //     name: "Maya Thompson",
-  //     role: "Innovation Solutions",
-  //     content:
-  //       "The Aunt platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have made our processes more efficient than ever before.",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //   },
-  //   {
-  //     name: "Maya Thompson",
-  //     role: "Innovation Solutions",
-  //     content:
-  //       "The Aunt platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have made our processes more efficient than ever before.",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //   },
-  //   {
-  //     name: "Maya Thompson",
-  //     role: "Innovation Solutions",
-  //     content:
-  //       "The Aunt platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have made our processes more efficient than ever before.",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //   },
-  //   {
-  //     name: "Maya Thompson",
-  //     role: "Innovation Solutions",
-  //     content:
-  //       "The Aunt platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have made our processes more efficient than ever before.",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //   },
-  // ];
-
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleGettingTestimonials = async () => {
@@ -65,6 +36,22 @@ const Testimonials = () => {
 
     handleGettingTestimonials();
   }, []);
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.children[0] as HTMLElement;
+
+      if (firstCard) {
+        const scrollAmount = firstCard.offsetWidth + 24;
+
+        container.scrollBy({
+          left: direction === "left" ? -scrollAmount : scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <section
@@ -87,10 +74,16 @@ const Testimonials = () => {
               </h2>
             </div>
             <div className="flex gap-2">
-              <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
+              <button
+                onClick={() => handleScroll("left")}
+                className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg shadow-gray-200 cursor-pointer"
+              >
                 <ChevronLeft className="w-5 h-5 text-gray-600" />
               </button>
-              <button className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg">
+              <button
+                onClick={() => handleScroll("right")}
+                className="p-2 rounded-full border border-gray-200 hover:bg-white shadow-lg shadow-gray-200"
+              >
                 <ChevronRight className="w-5 h-5 text-gray-600" />
               </button>
             </div>
@@ -112,7 +105,10 @@ const Testimonials = () => {
         )}
 
         {!loading && !error && testimonials.length > 0 && (
-          <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 ">
+          <div
+            ref={scrollContainerRef}
+            className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 "
+          >
             {testimonials?.map((testimonial, index) => (
               <div
                 key={index}
