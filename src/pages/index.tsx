@@ -1,3 +1,4 @@
+import { fetchSheetData } from "@/lib/sheets";
 import AccelerateTeam from "@/sections/accelerate-team";
 import AgentForBusiness from "@/sections/agent-for-business";
 import Footer from "@/sections/footer";
@@ -9,7 +10,7 @@ import Services from "@/sections/services";
 import Testimonials from "@/sections/testimonials";
 import WorkflowInAction from "@/sections/workflow-in-action";
 
-export default function Home() {
+export default function Home({ services, testimonials }: LandingPageProps) {
   return (
     <div>
       <Header />
@@ -28,10 +29,22 @@ export default function Home() {
       <Partners />
       <AccelerateTeam />
       <AgentForBusiness />
-      <Services />
+      <Services services={services} />
       <Integrations />
-      <Testimonials />
+      <Testimonials testimonials={testimonials} />
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const servicesData = await fetchSheetData("0");
+  const testimonialsData = await fetchSheetData("865690004");
+
+  return {
+    props: {
+      testimonials: testimonialsData,
+      services: servicesData,
+    },
+  };
 }

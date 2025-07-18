@@ -1,20 +1,10 @@
-"use client";
-
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-
-type Testimonial = {
-  id: string;
-  name: string;
-  role: string;
-  content: string;
-  avatar: string;
-};
+import { useRef } from "react";
 
 const localTestimonials = [
   {
-    content:
+    quote:
       "The Auxi platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have streamlined our project management. I can't believe we ever managed without it",
     name: "Maya Thompson",
     role: "InnovateTech So",
@@ -22,7 +12,7 @@ const localTestimonials = [
     avatar: "",
   },
   {
-    content:
+    quote:
       "The Auxi platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have streamlined our project management. I can't believe we ever managed without it",
     name: "Maya Thompson",
     role: "InnovateTech So",
@@ -30,7 +20,7 @@ const localTestimonials = [
     avatar: "",
   },
   {
-    content:
+    quote:
       "The Auxi platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have streamlined our project management. I can't believe we ever managed without it",
     name: "Maya Thompson",
     role: "InnovateTech So",
@@ -38,8 +28,8 @@ const localTestimonials = [
     avatar: "",
   },
   {
-    content:
-      "The Auxi platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have streamlined our project management. I can't believe we ever managed without it",
+    quote:
+      "The Auxi platform has revolutionized our team's workflow. Its user-friendly design and perfect integration with our existing software have streamlined our project management",
     name: "Maya Thompson",
     role: "InnovateTech So",
     company: "InnovateTech Solutions",
@@ -47,30 +37,8 @@ const localTestimonials = [
   },
 ];
 
-const Testimonials = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
+const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleGettingTestimonials = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch("/api/testimonials");
-        const data = await res.json();
-        setTestimonials(data);
-        setError(null);
-      } catch {
-        setError("Failed to load testimonials");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    handleGettingTestimonials();
-  }, []);
 
   const handleScroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -125,106 +93,95 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {loading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 4 }).map((_, idx) => (
-              <SkeletonCard key={idx} />
-            ))}
-          </div>
-        )}
+        {testimonials.length! > 0 ||
+          (testimonials.length === 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {Array.from({ length: 4 }).map((_, idx) => (
+                <SkeletonCard key={idx} />
+              ))}
+            </div>
+          ))}
 
-        {error && (
-          <div className="text-center text-gray-500 py-6">
-            <p>{error}</p>
-          </div>
-        )}
-
-        {!loading && !error && (
-          <>
-            {" "}
-            {testimonials.length > 0 ? (
-              <div
-                ref={scrollContainerRef}
-                className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 "
-              >
-                {testimonials?.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[368px]"
-                  >
-                    <div className="flex items-start gap-3 relative">
-                      <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
-                        <div className="inner-icon">
-                          <Image
-                            src={
-                              testimonial.avatar || "/images/auxi-avatar.png"
-                            }
-                            alt={testimonial.name}
-                            width={120}
-                            height={120}
-                            className="w-14 h-14 object-contain"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="p-6 py-2">
-                        <h4 className="font-semibold text-gray-900">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-sm text-gray-500">
-                          {testimonial.role}
-                        </p>
+        <>
+          {" "}
+          {testimonials?.length > 0 ? (
+            <div
+              ref={scrollContainerRef}
+              className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 "
+            >
+              {testimonials?.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[368px]"
+                >
+                  <div className="flex items-start gap-3 relative">
+                    <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
+                      <div className="inner-icon">
+                        <Image
+                          src={testimonial.logo || "/images/auxi-avatar.png"}
+                          alt={testimonial.name}
+                          width={120}
+                          height={120}
+                          className="w-14 h-14 object-contain"
+                        />
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed p-6">
-                      <q>{testimonial.content}</q>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                ref={scrollContainerRef}
-                className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 "
-              >
-                {localTestimonials?.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[368px]"
-                  >
-                    <div className="flex items-start gap-3 relative">
-                      <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
-                        <div className="inner-icon">
-                          <Image
-                            src={
-                              testimonial.avatar || "/images/auxi-avatar.png"
-                            }
-                            alt={testimonial.name}
-                            width={120}
-                            height={120}
-                            className="w-14 h-14 object-contain"
-                          />
-                        </div>
-                      </div>
 
-                      <div className="p-6 py-2">
-                        <h4 className="font-semibold text-gray-900">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-sm text-gray-500">
-                          {testimonial.role}
-                        </p>
+                    <div className="p-6 py-2">
+                      <h4 className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-gray-500">
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed p-6">
+                    <q>{testimonial.quote}</q>
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              ref={scrollContainerRef}
+              className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-6 "
+            >
+              {localTestimonials?.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white border-2 border-[#AECDA6] rounded-3xl  shadow-none min-h-[40dvh] min-w-[368px]"
+                >
+                  <div className="flex items-start gap-3 relative">
+                    <div className="testimonials-avatar-wrapper -ml-0.5 -mt-0.5 rounded-tl-md ">
+                      <div className="inner-icon">
+                        <Image
+                          src={testimonial.avatar || "/images/auxi-avatar.png"}
+                          alt={testimonial.name}
+                          width={120}
+                          height={120}
+                          className="w-14 h-14 object-contain"
+                        />
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed p-6">
-                      <q>{testimonial.content}</q>
-                    </p>
+
+                    <div className="p-6 py-2">
+                      <h4 className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-gray-500">
+                        {testimonial.role}
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+                  <p className="text-sm text-gray-600 leading-relaxed p-6">
+                    <q>{testimonial.quote}</q>
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       </div>
     </section>
   );
